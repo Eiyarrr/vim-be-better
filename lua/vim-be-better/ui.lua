@@ -1,4 +1,4 @@
-local function createMenu(buf)
+local function createWindow(buf)
     print("creating menu")
 
     local width = 150
@@ -26,6 +26,6 @@ local function setLines(buf, lines)
 end
 
 return {
-    createMenu = createMenu,
+    createWindow = createWindow,
     setLines = setLines,
 }
