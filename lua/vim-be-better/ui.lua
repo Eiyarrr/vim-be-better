@@ -1,7 +1,5 @@
-local function createMenu()
+local function createMenu(buf)
     print("creating menu")
-
-    local buf = vim.api.nvim_create_buf(false, true)
 
     local width = 150
     local height = 50
@@ -21,6 +19,13 @@ local function createMenu()
     }
 end
 
+local function setLines(buf, lines)
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+    return buf
+end
+
 return {
     createMenu = createMenu,
+    setLines = setLines,
 }
