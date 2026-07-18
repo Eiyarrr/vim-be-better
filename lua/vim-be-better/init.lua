@@ -10,7 +10,11 @@ local function start()
     menu.createMenu(buf)
 
     local window = ui.createWindow(buf)
-    print("start")
+
+    vim.schedule(function()
+        local dimensions = ui.getWindowDimensions()
+        print(tostring(dimensions.width) .. ", " .. tostring(dimensions.height))
+    end)
 end
 
 local function setup()

@@ -25,7 +25,15 @@ local function setLines(buf, lines)
     return buf
 end
 
+local function getWindowDimensions()
+    return {
+        width = vim.api.nvim_win_get_width(0),
+        height = vim.api.nvim_win_get_height(0),
+    }
+end
+
 return {
     createWindow = createWindow,
     setLines = setLines,
+    getWindowDimensions = getWindowDimensions,
 }
