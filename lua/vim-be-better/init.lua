@@ -1,4 +1,4 @@
-local ui = require("vim-be-better.ui")
+local ui = require("lua.vim-be-better.ui")
 local menu = require("lua.vim-be-better.menu")
 
 local function start()
@@ -8,12 +8,12 @@ local function start()
     vim.bo[buf].swapfile = false
 
     menu.createMenu(buf)
+    vim.bo[buf].modifiable = false
 
     local window = ui.createWindow(buf)
 
     vim.schedule(function()
-        local dimensions = ui.getWindowDimensions()
-        print(tostring(dimensions.width) .. ", " .. tostring(dimensions.height))
+        menu.setMenuMappings(buf)
     end)
 end
 
