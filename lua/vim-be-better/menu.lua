@@ -14,7 +14,7 @@ local function createMenu(buf)
 end
 
 local function setMenuMappings(buf)
-    vim.keymap.set("n", "1", gameStarter.hjkl, { buffer = buf })
+    vim.keymap.set("n", "1", gameStarter.startHJKL, { buffer = buf })
 end
 
 return {

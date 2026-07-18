@@ -4,4 +4,10 @@
     pressing 'X' when over the 'O' to remove it.
 --]]
 
+local function beginGame()
+    print("started HJKL")
+end
 
+return {
+    beginGame = beginGame,
+}

@@ -1,7 +1,10 @@
-local function hjkl()
+local hjkl = require("lua.vim-be-better.games.hjkl")
+
+local function startHJKL()
     print("starting hjkl")
+    hjkl.beginGame()
 end
 
 return {
-    hjkl = hjkl,
+    startHJKL = startHJKL,
 }
