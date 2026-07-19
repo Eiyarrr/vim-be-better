@@ -7,11 +7,18 @@ local ui = require("lua.vim-be-better.ui")
 
 local game = {
     score = 0,
-    board = {
-        { ".", ".", ".", "O", "." },
-        { ".", "O", ".", ".", "." },
-    }
+    board = {}
 }
+
+local function populateBoard()
+    for _ = 1, 10, 1 do
+        local inner = {}
+        for _ = 1, 10, 1 do
+            table.insert(inner, ".")
+        end
+        table.insert(game.board, inner)
+    end
+end
 
 local function printGame()
     local lines = {}
@@ -41,6 +48,7 @@ end
 
 local function beginGame()
     print("HJKL Starting!")
+    populateBoard()
     printGame()
 
     vim.api.nvim_create_autocmd("CursorMoved", {
