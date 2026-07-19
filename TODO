@@ -1,5 +1,0 @@
-HJKL:
-    get window size
-    fill window with ' '
-    @ rand row & col place 'O'
-    wait for deletion
