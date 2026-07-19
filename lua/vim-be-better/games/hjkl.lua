@@ -11,8 +11,11 @@ local game = {
 }
 
 local function populateBoard()
-    local rows = 10
-    local cols = 10
+    game.board = {}
+
+    local dimensions = ui.getWindowDimensions()
+    local rows = dimensions.height / 5
+    local cols = dimensions.width / 5
 
     local randRow = math.random(rows)
     local randCol = math.random(cols)
@@ -40,7 +43,7 @@ local function printGame()
     vim.bo[Buf].modifiable = true
     ui.setLines(lines)
     vim.bo[Buf].modifiable = false
-    print(game.score)
+    print("Score: " .. game.score)
 end
 
 local function checkCursor()
