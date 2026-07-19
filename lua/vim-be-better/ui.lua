@@ -4,7 +4,7 @@ local function createWindow()
     local width = 150
     local height = 50
 
-    local window = vim.api.nvim_open_win(Buf, true, {
+    Window = vim.api.nvim_open_win(Buf, true, {
         relative = "editor",
         width = width,
         height = height,
@@ -12,16 +12,10 @@ local function createWindow()
         col = math.floor((vim.o.columns - width) / 2),
         border = "rounded",
     })
-
-    return {
-        window = window,
-    }
 end
 
 local function setLines(lines)
     vim.api.nvim_buf_set_lines(Buf, 0, -1, false, lines)
-
-    return Buf
 end
 
 local function getWindowDimensions()

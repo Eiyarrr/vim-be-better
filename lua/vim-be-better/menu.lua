@@ -14,10 +14,10 @@ local function createMainMenu()
     }
     ui.setLines(menu)
 
-    setMenuMappings()
+    -- must be scheduled to prevent stalling
+    vim.schedule(function() setMenuMappings() end)
 end
 
 return {
     createMainMenu = createMainMenu,
-    setMenuMappings = setMenuMappings,
 }

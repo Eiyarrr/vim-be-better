@@ -10,11 +10,7 @@ local function start()
     menu.createMainMenu()
     vim.bo[Buf].modifiable = false
 
-    local window = ui.createWindow()
-
-    vim.schedule(function()
-        menu.setMenuMappings()
-    end)
+    ui.createWindow()
 end
 
 local function setup()
