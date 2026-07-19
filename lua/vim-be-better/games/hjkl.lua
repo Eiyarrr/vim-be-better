@@ -53,8 +53,8 @@ local function checkCursor()
     local col = pos[2] + 1 -- must be +1 to accurately represent cursor location
 
     if game.board[row][col] == "O" then
-        game.board[row][col] = "."
         game.score = game.score + 1
+        populateBoard()
         printGame()
     end
 end
