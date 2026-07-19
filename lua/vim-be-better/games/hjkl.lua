@@ -11,10 +11,20 @@ local game = {
 }
 
 local function populateBoard()
-    for _ = 1, 10, 1 do
+    local rows = 10
+    local cols = 10
+
+    local randRow = math.random(rows)
+    local randCol = math.random(cols)
+
+    for r = 1, rows, 1 do
         local inner = {}
-        for _ = 1, 10, 1 do
-            table.insert(inner, ".")
+        for c = 1, cols, 1 do
+            if r == randRow and c == randCol then
+                table.insert(inner, "O")
+            else
+                table.insert(inner, ".")
+            end
         end
         table.insert(game.board, inner)
     end
