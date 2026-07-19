@@ -5,7 +5,7 @@
 --]]
 
 local function beginGame()
-    print("started HJKL")
+    print("HJKL Starting!")
 end
 
 return {
