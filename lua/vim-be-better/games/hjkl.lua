@@ -45,7 +45,7 @@ local function beginGame()
 
     vim.api.nvim_create_autocmd("CursorMoved", {
         buffer = Buf,
-        callback = checkCursor()
+        callback = function() checkCursor() end
     })
 end
 
