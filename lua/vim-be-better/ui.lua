@@ -1,10 +1,10 @@
-local function createWindow(buf)
+local function createWindow()
     print("creating menu")
 
     local width = 150
     local height = 50
 
-    local window = vim.api.nvim_open_win(buf, true, {
+    local window = vim.api.nvim_open_win(Buf, true, {
         relative = "editor",
         width = width,
         height = height,
@@ -14,21 +14,20 @@ local function createWindow(buf)
     })
 
     return {
-        buf = buf,
         window = window,
     }
 end
 
-local function setLines(buf, lines)
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+local function setLines(lines)
+    vim.api.nvim_buf_set_lines(Buf, 0, -1, false, lines)
 
-    return buf
+    return Buf
 end
 
 local function getWindowDimensions()
     return {
         width = vim.api.nvim_win_get_width(0),
-        height = vim.api.nvim_win_get_height(0),
+        height = vim.api.nvim_win_get_height(0)
     }
 end
 

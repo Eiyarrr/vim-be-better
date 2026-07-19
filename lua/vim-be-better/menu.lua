@@ -1,23 +1,23 @@
 local ui = require("lua.vim-be-better.ui")
 local hjkl = require("lua.vim-be-better.games.hjkl")
 
-local function createMenu(buf)
+local function setMenuMappings()
+    vim.keymap.set("n", "1", hjkl.beginGame)
+end
+
+local function createMainMenu()
     local menu = {
         "VimBeBetter",
         "",
         "HKJL -> '1'",
         "EXIT -> '0'",
     }
-    ui.setLines(buf, menu)
+    ui.setLines(menu)
 
-    return buf
-end
-
-local function setMenuMappings(buf)
-    vim.keymap.set("n", "1", hjkl.beginGame, { buffer = buf })
+    setMenuMappings()
 end
 
 return {
-    createMenu = createMenu,
+    createMainMenu = createMainMenu,
     setMenuMappings = setMenuMappings,
 }

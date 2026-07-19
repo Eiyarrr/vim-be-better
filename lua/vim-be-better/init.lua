@@ -2,18 +2,18 @@ local ui = require("lua.vim-be-better.ui")
 local menu = require("lua.vim-be-better.menu")
 
 local function start()
-    local buf = vim.api.nvim_create_buf(false, true)
-    vim.bo[buf].buftype = "nofile"
-    vim.bo[buf].bufhidden = "wipe"
-    vim.bo[buf].swapfile = false
+    Buf = vim.api.nvim_create_buf(false, true)
+    vim.bo[Buf].buftype = "nofile"
+    vim.bo[Buf].bufhidden = "wipe"
+    vim.bo[Buf].swapfile = false
 
-    menu.createMenu(buf)
-    vim.bo[buf].modifiable = false
+    menu.createMainMenu()
+    vim.bo[Buf].modifiable = false
 
-    local window = ui.createWindow(buf)
+    local window = ui.createWindow()
 
     vim.schedule(function()
-        menu.setMenuMappings(buf)
+        menu.setMenuMappings()
     end)
 end
 
