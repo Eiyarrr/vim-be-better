@@ -12,8 +12,8 @@ local function populateBoard()
     local rows = dimensions.height / 5
     local cols = dimensions.width / 5
 
-    local randRow = math.random(rows)
-    local randCol = math.random(cols)
+    local randRow = math.random(rows - 1)
+    local randCol = math.random(cols - 1)
 
     for r = 1, rows, 1 do
         local inner = {}
