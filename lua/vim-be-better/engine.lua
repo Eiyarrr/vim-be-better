@@ -2,7 +2,9 @@ local ui = require("lua.vim-be-better.ui")
 local menu = require("lua.vim-be-better.menu")
 
 -- function pre-declaration
+local pre_task
 local validate
+local post_task
 
 local state = {
     buffer = nil,
@@ -34,8 +36,6 @@ local function start(mode, difficulty)
     state.rng = math.randomseed(os.time())
     state.mode = mode
     state.difficulty = difficulty
-    state.cursor_moves = 0
-    state.start_time = os.time()
 
     -- create autocmds
     vim.api.nvim_create_autocmd("CursorMoved", {
@@ -52,14 +52,24 @@ local function start(mode, difficulty)
         buffer = buffer,
         callback = function() validate() end,
     })
+
+    pre_task()
+end
+
+pre_task = function()
+    state.mode.on_task_start(state)
 end
 
 validate = function()
-    local is_valid = state.mode.validate(state)
-    if is_valid then
+    local task_completed = state.mode.validate(state)
+    if task_completed then
         state.mode.on_task_end(state)
-        print("valid!")
+        post_task()
     end
+end
+
+post_task = function()
+    pre_task()
 end
 
 return {

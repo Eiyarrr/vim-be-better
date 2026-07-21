@@ -1,4 +1,7 @@
 local function on_task_start(state)
+    state.cursor_moved = 0
+    state.start_time = os.time()
+
     print("on_task_start")
 end
 
