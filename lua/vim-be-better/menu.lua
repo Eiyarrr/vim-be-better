@@ -21,7 +21,7 @@ local function createMainMenu(buffer)
     }
 
     vim.bo[buffer].modifiable = true
-    ui.setLines(menu)
+    ui.setLines(buffer, menu)
     vim.bo[buffer].modifiable = false
 
     setMenuMappings()
