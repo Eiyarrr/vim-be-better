@@ -19,11 +19,11 @@ local function start(game, difficulty)
     vim.bo[buffer].swapfile = false
     vim.bo[buffer].modifiable = false
 
-    -- fill buffer with main menu contents
-    menu.createMainMenu(buffer)
-
     -- create window
     local window = ui.createWindow(buffer)
+
+    -- fill buffer with main menu contents
+    menu.createMainMenu(buffer, window)
 
     state.buffer = buffer
     state.window = window

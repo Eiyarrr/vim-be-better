@@ -28,7 +28,7 @@ local function populateBoard()
     end
 end
 
-local function printGame()
+local function printGame(buffer)
     local lines = {}
 
     for _, row in ipairs(game.board) do
@@ -36,13 +36,13 @@ local function printGame()
     end
 
     vim.bo[buffer].modifiable = true
-    ui.setLines(lines)
+    ui.setLines(buffer, lines)
     vim.bo[buffer].modifiable = false
     print("Score: " .. game.score)
 end
 
-local function checkCursor()
-    local pos = vim.api.nvim_win_get_cursor(Window)
+local function checkCursor(buffer, window)
+    local pos = vim.api.nvim_win_get_cursor(window)
 
     local row = pos[1]
     local col = pos[2] + 1 -- must be +1 to accurately represent cursor location
@@ -50,18 +50,18 @@ local function checkCursor()
     if game.board[row][col] == "O" then
         game.score = game.score + 1
         populateBoard()
-        printGame()
+        printGame(buffer)
     end
 end
 
-local function beginGame()
+local function beginGame(buffer, window)
     print("HJKL Starting!")
     populateBoard()
-    printGame()
+    printGame(buffer)
 
     vim.api.nvim_create_autocmd("CursorMoved", {
         buffer = buffer,
-        callback = function() checkCursor() end
+        callback = function() checkCursor(buffer, window) end
     })
 end
 

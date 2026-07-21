@@ -5,14 +5,14 @@ local function delMappings()
     vim.keymap.del("n", "1")
 end
 
-local function setMenuMappings()
+local function setMenuMappings(buffer, window)
     vim.keymap.set("n", "1", function()
         delMappings()
-        hjkl.beginGame()
+        hjkl.beginGame(buffer, window)
     end)
 end
 
-local function createMainMenu(buffer)
+local function createMainMenu(buffer, window)
     local menu = {
         "VimBeBetter",
         "",
@@ -24,7 +24,7 @@ local function createMainMenu(buffer)
     ui.setLines(buffer, menu)
     vim.bo[buffer].modifiable = false
 
-    setMenuMappings()
+    setMenuMappings(buffer, window)
 end
 
 return {
