@@ -25,8 +25,14 @@ local function start(mode, difficulty)
     -- fill buffer with main menu contents
     menu.createMainMenu(buffer, window)
 
+    -- filling state
     state.buffer = buffer
     state.window = window
+    state.rng = math.randomseed(os.time())
+    state.mode = mode
+    state.difficulty = difficulty
+    state.cursor_moves = 0
+    state.start_time = os.time()
 end
 
 return {
