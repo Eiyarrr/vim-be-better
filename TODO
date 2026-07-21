@@ -1,4 +1,6 @@
-Add an autocmd for WinClosed to clean up
+init should call menu to make main menu
+then with main menu it should call a submenu pick the difficulty
+then that calls engine.start(mode, difficulty)
 
 -----
 e.start()
