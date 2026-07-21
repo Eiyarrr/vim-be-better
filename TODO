@@ -2,12 +2,6 @@ Create a simplistic engine for the plugin to run off of:
 
 This engine should:
 ret empty start,validate,and next_task fns
-def engine.start(mode, difficulty) & store in state
-
-create buf
-create win
-
- + bufhidden=wipe (for cleanup)
 
 build state with buf, win, diff, start time, cursor movement (var to change during mode), task ID
 add state into engine
