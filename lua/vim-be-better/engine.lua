@@ -5,13 +5,13 @@ local state = {
     buffer = nil,
     window = nil,
     rng = nil,
-    game = nil,
+    mode = nil,
     difficulty = nil,
     cursor_moves = nil,
     start_time = nil,
 }
 
-local function start(game, difficulty)
+local function start(mode, difficulty)
     -- create buffer
     local buffer = vim.api.nvim_create_buf(false, true)
     vim.bo[buffer].buftype = "nofile"
