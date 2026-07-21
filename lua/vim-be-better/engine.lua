@@ -40,21 +40,21 @@ local function start(mode, difficulty)
     -- create autocmds
     vim.api.nvim_create_autocmd("CursorMoved", {
         buffer = buffer,
-        callback = validate(),
+        callback = function() validate() end,
     })
 
     vim.api.nvim_create_autocmd("TextChanged", {
         buffer = buffer,
-        callback = validate(),
+        callback = function() validate() end,
     })
 
     vim.api.nvim_create_autocmd("InsertLeave", {
         buffer = buffer,
-        callback = validate(),
+        callback = function() validate() end,
     })
 end
 
-local function validate()
+validate = function()
     local is_valid = state.mode.validate(state)
     if is_valid then    
         state.mode.on_task_end(state)
