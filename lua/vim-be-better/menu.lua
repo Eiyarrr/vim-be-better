@@ -12,7 +12,7 @@ local function setMenuMappings()
     end)
 end
 
-local function createMainMenu()
+local function createMainMenu(buffer)
     local menu = {
         "VimBeBetter",
         "",

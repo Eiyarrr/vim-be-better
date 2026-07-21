@@ -18,12 +18,13 @@ local function start()
     vim.bo[buffer].buftype = "nofile"
     vim.bo[buffer].bufhidden = "wipe"
     vim.bo[buffer].swapfile = false
+    vim.bo[buffer].modifiable = false
 
     -- fill buffer with main menu contents
-    menu.createMainMenu()
+    menu.createMainMenu(buffer)
 
     -- create window
-    local window = ui.createWindow()
+    local window = ui.createWindow(buffer)
 
     state.buffer = buffer
     state.window = window

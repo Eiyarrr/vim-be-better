@@ -1,4 +1,4 @@
-local function createWindow()
+local function createWindow(buffer)
     print("creating menu")
 
     local width = 150
@@ -16,7 +16,7 @@ local function createWindow()
     return window
 end
 
-local function setLines(lines)
+local function setLines(buffer, lines)
     vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 end
 
