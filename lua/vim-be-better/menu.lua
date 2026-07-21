@@ -1,5 +1,5 @@
 local ui = require("lua.vim-be-better.ui")
-local hjkl = require("lua.vim-be-better.games.hjkl")
+local hjkl = require("lua.vim-be-better.modes.hjkl")
 
 local function delMappings()
     vim.keymap.del("n", "1")
@@ -17,7 +17,7 @@ local function createMainMenu(buffer, window)
         "VimBeBetter",
         "",
         "HKJL -> '1'",
-        "EXIT -> '0'",
+        "EXIT -> ':q'",
     }
 
     vim.bo[buffer].modifiable = true
