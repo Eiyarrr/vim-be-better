@@ -2,7 +2,6 @@ local ui = require("lua.vim-be-better.ui")
 local menu = require("lua.vim-be-better.menu")
 
 local state = {
-    task_id = nil,
     buffer = nil,
     window = nil,
     rng = nil,
@@ -12,7 +11,7 @@ local state = {
     start_time = nil,
 }
 
-local function start()
+local function start(game, difficulty)
     -- create buffer
     local buffer = vim.api.nvim_create_buf(false, true)
     vim.bo[buffer].buftype = "nofile"
