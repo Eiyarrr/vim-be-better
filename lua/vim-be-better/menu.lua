@@ -19,10 +19,12 @@ local function createMainMenu()
         "HKJL -> '1'",
         "EXIT -> '0'",
     }
-    ui.setLines(menu)
 
-    -- must be scheduled to prevent stalling
-    vim.schedule(function() setMenuMappings() end)
+    vim.bo[buffer].modifiable = true
+    ui.setLines(menu)
+    vim.bo[buffer].modifiable = false
+
+    setMenuMappings()
 end
 
 return {

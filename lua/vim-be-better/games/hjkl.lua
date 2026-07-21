@@ -35,9 +35,9 @@ local function printGame()
         table.insert(lines, table.concat(row))
     end
 
-    vim.bo[Buf].modifiable = true
+    vim.bo[buffer].modifiable = true
     ui.setLines(lines)
-    vim.bo[Buf].modifiable = false
+    vim.bo[buffer].modifiable = false
     print("Score: " .. game.score)
 end
 
@@ -60,7 +60,7 @@ local function beginGame()
     printGame()
 
     vim.api.nvim_create_autocmd("CursorMoved", {
-        buffer = Buf,
+        buffer = buffer,
         callback = function() checkCursor() end
     })
 end
