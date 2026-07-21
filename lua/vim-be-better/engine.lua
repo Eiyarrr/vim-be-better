@@ -56,7 +56,7 @@ end
 
 validate = function()
     local is_valid = state.mode.validate(state)
-    if is_valid then    
+    if is_valid then
         state.mode.on_task_end(state)
         print("valid!")
     end

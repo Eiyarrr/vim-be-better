@@ -9,3 +9,9 @@ end
 local function on_task_end(state)
     print("on_task_end")
 end
+
+return {
+    on_task_start = on_task_start,
+    validate = validate,
+    on_task_end = on_task_end,
+}
