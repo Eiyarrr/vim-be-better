@@ -1,6 +1,9 @@
 local ui = require("lua.vim-be-better.ui")
 local menu = require("lua.vim-be-better.menu")
 
+-- function pre-declaration
+local validate
+
 local state = {
     buffer = nil,
     window = nil,
@@ -33,6 +36,25 @@ local function start(mode, difficulty)
     state.difficulty = difficulty
     state.cursor_moves = 0
     state.start_time = os.time()
+
+    -- create autocmds
+    vim.api.nvim_create_autocmd("CursorMoved", {
+        buffer = buffer,
+        callback = validate(),
+    })
+
+    vim.api.nvim_create_autocmd("TextChanged", {
+        buffer = buffer,
+        callback = validate(),
+    })
+
+    vim.api.nvim_create_autocmd("InsertLeave", {
+        buffer = buffer,
+        callback = validate(),
+    })
+end
+
+local function validate()
 end
 
 return {
