@@ -5,6 +5,7 @@ local menu = require("lua.vim-be-better.menu")
 local pre_task
 local validate
 local post_task
+local cleanup
 
 local state = {
     buffer = nil,
@@ -53,6 +54,19 @@ local function start(mode, difficulty)
         callback = function() validate() end,
     })
 
+    vim.api.nvim_create_autocmd("WinClosed", {
+        buffer = buffer,
+        callback = function(args)
+            -- args.match is a string containing the closed window's ID
+            -- (why it's a string I will never know)
+            local closed_window = tonumber(args.match)
+
+            if closed_window == state.window then
+                cleanup()
+            end
+        end,
+    })
+
     pre_task()
 end
 
@@ -70,6 +84,9 @@ end
 
 post_task = function()
     pre_task()
+end
+
+cleanup = function(args)
 end
 
 return {
