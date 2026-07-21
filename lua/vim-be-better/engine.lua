@@ -55,6 +55,11 @@ local function start(mode, difficulty)
 end
 
 local function validate()
+    local is_valid = state.mode.validate(state)
+    if is_valid then    
+        state.mode.on_task_end(state)
+        print("valid!")
+    end
 end
 
 return {
