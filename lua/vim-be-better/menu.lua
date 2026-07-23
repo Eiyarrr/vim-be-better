@@ -4,14 +4,14 @@ local ui = require("lua.vim-be-better.ui")
 -- function predeclaration
 local set_mappings_mode
 local del_mappings_mode
+local create_difficulty_menu
 local set_mappings_difficulty
 local del_mappings_difficulty
 
 local mode
 local difficulty
 
-local function create_main_menu(buffer)
-
+local function create_mode_menu(buffer)
     -- generate menu
     local menu = {
         "VimBeBetter",
@@ -20,11 +20,12 @@ local function create_main_menu(buffer)
         "EXIT -> ':q'",
     }
 
+    -- modify buffer to show menu
     vim.bo[buffer].modifiable = true
     ui.setLines(buffer, menu)
     vim.bo[buffer].modifiable = false
 
-    set_mappings_mode()
+    set_mappings_mode(buffer)
 
     return {
         mode,
@@ -32,15 +33,34 @@ local function create_main_menu(buffer)
     }
 end
 
-set_mappings_mode = function()
+set_mappings_mode = function(buffer)
     vim.keymap.set("n", "1", function()
         del_mappings_mode()
+        create_difficulty_menu(buffer)
         mode = registry.hjkl
     end)
 end
 
 del_mappings_mode = function()
     vim.keymap.del("n", "1")
+end
+
+create_difficulty_menu = function(buffer)
+    local menu = {
+        "VimBeBetter",
+        "",
+        "Easy -> 1",
+        "Medium -> 2",
+        "Hard -> 3",
+        "Challenge -> 4",
+    }
+
+    -- modify buffer to show menu
+    vim.bo[buffer].modifiable = true
+    ui.setLines(buffer, menu)
+    vim.bo[buffer].modifiable = false
+
+    set_mappings_difficulty()
 end
 
 set_mappings_difficulty = function()
@@ -70,5 +90,5 @@ del_mappings_difficulty = function()
 end
 
 return {
-    create_main_menu = create_main_menu,
+    create_mode_menu = create_mode_menu,
 }
