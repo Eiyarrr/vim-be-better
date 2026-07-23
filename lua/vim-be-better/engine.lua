@@ -17,7 +17,7 @@ local state = {
     start_time = nil,
 }
 
-local function setup()
+local function start(mode, difficulty)
     -- create buffer
     local buffer = vim.api.nvim_create_buf(false, true)
     vim.bo[buffer].buftype = "nofile"
@@ -36,10 +36,6 @@ local function setup()
     state.window = window
     state.mode = selections.mode
     state.difficulty = selections.difficulty
-end
-
-local function start(mode, difficulty)
-    -- filling state
     state.rng = math.randomseed(os.time())
     state.mode = mode
     state.difficulty = difficulty
