@@ -46,7 +46,10 @@ start = function()
         -- create autocmds
         vim.api.nvim_create_autocmd("CursorMoved", {
             buffer = state.buffer,
-            callback = function() validate() end,
+            callback = function()
+                state.cursor_moves = state.cursor_moves + 1
+                validate()
+            end,
         })
 
         vim.api.nvim_create_autocmd("TextChanged", {
