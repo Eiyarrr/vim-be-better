@@ -37,8 +37,6 @@ local function start(mode, difficulty)
     state.mode = selections.mode
     state.difficulty = selections.difficulty
     state.rng = math.randomseed(os.time())
-    state.mode = mode
-    state.difficulty = difficulty
 
     -- create autocmds
     vim.api.nvim_create_autocmd("CursorMoved", {
