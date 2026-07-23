@@ -14,7 +14,7 @@ local state = {
     rng = nil,
     mode = nil,
     difficulty = nil,
-    cursor_moves = nil,
+    cursor_moves = 0,
     start_time = nil,
 }
 
