@@ -38,7 +38,7 @@ set_mappings_mode = function(buffer)
         del_mappings_mode()
         create_difficulty_menu(buffer)
         mode = registry.hjkl
-    end)
+    end, { buffer = buffer })
 end
 
 del_mappings_mode = function()
@@ -60,26 +60,26 @@ create_difficulty_menu = function(buffer)
     ui.setLines(buffer, menu)
     vim.bo[buffer].modifiable = false
 
-    set_mappings_difficulty()
+    set_mappings_difficulty(buffer)
 end
 
-set_mappings_difficulty = function()
+set_mappings_difficulty = function(buffer)
     vim.keymap.set("n", "1", function()
         del_mappings_difficulty()
         difficulty = "easy"
-    end)
+    end, { buffer = buffer })
     vim.keymap.set("n", "2", function()
         del_mappings_difficulty()
         difficulty = "medium"
-    end)
+    end, { buffer = buffer })
     vim.keymap.set("n", "3", function()
         del_mappings_difficulty()
         difficulty = "hard"
-    end)
+    end, { buffer = buffer })
     vim.keymap.set("n", "4", function()
         del_mappings_difficulty()
         difficulty = "challenge"
-    end)
+    end, { buffer = buffer })
 end
 
 del_mappings_difficulty = function()
