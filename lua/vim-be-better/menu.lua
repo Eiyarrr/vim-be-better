@@ -9,9 +9,8 @@ local set_mappings_difficulty
 local del_mappings_difficulty
 
 local mode
-local difficulty
 
-local function create_mode_menu(buffer)
+local function create_mode_menu(buffer, on_complete)
     -- generate menu
     local menu = {
         "VimBeBetter",
@@ -25,18 +24,13 @@ local function create_mode_menu(buffer)
     ui.setLines(buffer, menu)
     vim.bo[buffer].modifiable = false
 
-    set_mappings_mode(buffer)
-
-    return {
-        mode,
-        difficulty,
-    }
+    set_mappings_mode(buffer, on_complete)
 end
 
-set_mappings_mode = function(buffer)
+set_mappings_mode = function(buffer, on_complete)
     vim.keymap.set("n", "1", function()
         del_mappings_mode()
-        create_difficulty_menu(buffer)
+        create_difficulty_menu(buffer, on_complete)
         mode = registry.hjkl
     end, { buffer = buffer })
 end
@@ -45,7 +39,7 @@ del_mappings_mode = function()
     vim.keymap.del("n", "1")
 end
 
-create_difficulty_menu = function(buffer)
+create_difficulty_menu = function(buffer, on_complete)
     local menu = {
         "VimBeBetter",
         "",
@@ -60,25 +54,25 @@ create_difficulty_menu = function(buffer)
     ui.setLines(buffer, menu)
     vim.bo[buffer].modifiable = false
 
-    set_mappings_difficulty(buffer)
+    set_mappings_difficulty(buffer, on_complete)
 end
 
-set_mappings_difficulty = function(buffer)
+set_mappings_difficulty = function(buffer, on_complete)
     vim.keymap.set("n", "1", function()
         del_mappings_difficulty()
-        difficulty = "easy"
+        on_complete(mode, "easy")
     end, { buffer = buffer })
     vim.keymap.set("n", "2", function()
         del_mappings_difficulty()
-        difficulty = "medium"
+        on_complete(mode, "medium")
     end, { buffer = buffer })
     vim.keymap.set("n", "3", function()
         del_mappings_difficulty()
-        difficulty = "hard"
+        on_complete(mode, "hard")
     end, { buffer = buffer })
     vim.keymap.set("n", "4", function()
         del_mappings_difficulty()
-        difficulty = "challenge"
+        on_complete(mode, "challenge")
     end, { buffer = buffer })
 end
 
