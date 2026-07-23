@@ -46,8 +46,6 @@ end
 
 local function on_task_end(state)
     game.score = game.score + 1
-
-    print("on_task_end")
 end
 
 local function validate(state)
@@ -60,8 +58,6 @@ local function validate(state)
     if game.board[row][col] == "O" then
         return true
     end
-
-    print("validate")
 
     return false
 end

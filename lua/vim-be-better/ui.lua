@@ -1,6 +1,4 @@
 local function createWindow(buffer)
-    print("creating menu")
-
     local width = 150
     local height = 50
 
