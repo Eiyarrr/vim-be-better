@@ -41,10 +41,16 @@ local function on_task_start(state)
     vim.bo[state.buffer].modifiable = true
     ui.setLines(state.buffer, lines)
     vim.bo[state.buffer].modifiable = false
-    print("Score: " .. game.score)
 end
 
 local function on_task_end(state)
+    -- calculate total time to complete
+    local end_time = os.time()
+    local delta_time = end_time - state.start_time
+
+    -- tell user their scores
+    print("Time: " .. delta_time .. " | Moves: " .. state.cursor_moves .. " | Score: " .. game.score)
+
     game.score = game.score + 1
 end
 
