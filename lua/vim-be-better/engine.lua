@@ -92,6 +92,6 @@ cleanup = function(args)
 end
 
 return {
-    setup = setup,
+    start = start,
     state = state,
 }
