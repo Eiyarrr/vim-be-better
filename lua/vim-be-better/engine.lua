@@ -29,7 +29,7 @@ local function setup()
     local window = ui.createWindow(buffer)
 
     -- fill buffer with main menu contents
-    menu.createMainMenu(buffer, window)
+    menu.createMainMenu(buffer)
 
     -- filling state
     state.buffer = buffer
