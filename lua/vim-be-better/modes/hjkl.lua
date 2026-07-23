@@ -45,7 +45,7 @@ local function on_task_start(state)
 end
 
 local function on_task_end(state)
-    on_task_start(state)
+    game.score = game.score + 1
 
     print("on_task_end")
 end
@@ -58,12 +58,12 @@ local function validate(state)
     local col = pos[2] + 1 -- must be +1 to accurately represent cursor location
 
     if game.board[row][col] == "O" then
-        game.score = game.score + 1
+        return true
     end
 
-    on_task_end(state)
-
     print("validate")
+
+    return false
 end
 
 return {
