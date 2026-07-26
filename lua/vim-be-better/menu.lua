@@ -1,5 +1,5 @@
-local registry = require("lua.vim-be-better.modes.registry")
-local ui = require("lua.vim-be-better.ui")
+local registry = require("vim-be-better.modes.registry")
+local ui = require("vim-be-better.ui")
 
 -- function predeclaration
 local set_mappings_mode

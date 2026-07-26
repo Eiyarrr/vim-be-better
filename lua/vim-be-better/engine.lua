@@ -1,5 +1,5 @@
-local ui = require("lua.vim-be-better.ui")
-local menu = require("lua.vim-be-better.menu")
+local ui = require("vim-be-better.ui")
+local menu = require("vim-be-better.menu")
 
 -- function pre-declaration
 local start

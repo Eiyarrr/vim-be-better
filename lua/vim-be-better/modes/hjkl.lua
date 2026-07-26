@@ -1,4 +1,4 @@
-local ui = require("lua.vim-be-better.ui")
+local ui = require("vim-be-better.ui")
 
 local game = {
     score = 0,
