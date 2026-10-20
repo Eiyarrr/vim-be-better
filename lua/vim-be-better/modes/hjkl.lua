@@ -1,4 +1,5 @@
 local ui = require("vim-be-better.ui")
+local to_int = require("difficulty_to_int")
 
 local game = {
     score = 0,
@@ -13,8 +14,10 @@ local function on_task_start(state)
     game.board = {}
 
     local dimensions = ui.getWindowDimensions()
-    local rows = dimensions.height / 5
-    local cols = dimensions.width / 5
+    local difficulty = to_int.difficulty_to_int(state)
+
+    local rows = dimensions.height / (5 - difficulty)
+    local cols = dimensions.width / (5 - difficulty)
 
     local randRow = math.random(rows - 1)
     local randCol = math.random(cols - 1)
@@ -49,7 +52,8 @@ local function on_task_end(state)
     local delta_time = end_time - state.start_time
 
     -- tell user their scores
-    print("Time: " .. delta_time .. " | Moves: " .. state.cursor_moves .. " | Score: " .. game.score)
+    print("Difficulty: " ..
+    state.difficulty .. "Time: " .. delta_time .. " | Moves: " .. state.cursor_moves .. " | Score: " .. game.score)
 
     game.score = game.score + 1
 end
