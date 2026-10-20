@@ -1,5 +1,5 @@
 local ui = require("vim-be-better.ui")
-local to_int = require("difficulty_to_int")
+local to_int = require("vim-be-better.modes.difficulty_to_int")
 
 local game = {
     score = 0,
