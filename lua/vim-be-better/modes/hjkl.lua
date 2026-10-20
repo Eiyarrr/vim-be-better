@@ -1,5 +1,4 @@
 local ui = require("vim-be-better.ui")
-local to_int = require("vim-be-better.modes.difficulty_to_int")
 
 local game = {
     score = 0,
@@ -14,7 +13,9 @@ local function on_task_start(state)
     game.board = {}
 
     local dimensions = ui.getWindowDimensions()
-    local difficulty = to_int.difficulty_to_int(state)
+
+    local levels = { easy = 1, medium = 2, hard = 3, challenge = 4 }
+    local difficulty = levels[state.difficulty]
 
     local rows = dimensions.height / (5 - difficulty)
     local cols = dimensions.width / (5 - difficulty)
